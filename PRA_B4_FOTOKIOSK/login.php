@@ -2,7 +2,7 @@
 <html lang="nl">
 
 <head>
-    <title>StoringApp</title>
+    <title>Fotokiosk-B4</title>
     <?php require_once 'resources/views/components/head.php'; ?>
 </head>
 

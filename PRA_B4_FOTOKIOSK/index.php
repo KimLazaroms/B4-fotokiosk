@@ -2,7 +2,7 @@
 <html lang="nl">
 
 <head>
-    <title>StoringApp</title>
+    <title>Fotokiosk-B4</title>
     <?php require_once 'resources/views/components/head.php'; ?>
 </head>
 
@@ -16,9 +16,8 @@
             echo "<div class='msg'>" . $_GET['msg'] . "</div>";
         } ?>
 
-        <h1>Welkom bij de technische dienst</h1>
+        <h1>Welkom bij de foto boutique!</h1>
         <img src="public_html/img/logo-big-fill-only.png" alt="logo">
-        check
     </div>
     <!-- //check 2 -->
 
