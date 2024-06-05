@@ -23,7 +23,7 @@
 
     <?php 
         require_once '../../../config/conn.php';
-        $select_query = "SELECT * FROM ...";
+        $select_query = "SELECT * FROM meldingen";
         $statement = $conn->prepare($select_query);
         $statement->execute();
         $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);
