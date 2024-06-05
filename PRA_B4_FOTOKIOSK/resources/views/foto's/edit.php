@@ -2,7 +2,7 @@
 <html lang="nl">
 
 <head>
-    <title>StoringApp / Meldingen / Aanpassen</title>
+    <title>Fotokiosk-B4 / Foto's / Aanpassen</title>
     <?php require_once '../components/head.php'; ?>
 </head>
 
@@ -50,36 +50,9 @@
             <!-- (voeg hier opdracht 7 toe) -->
 
             <div class="form-group">
-                <label>Naam attractie:</label>
-                <?php echo $melding['attractie']; ?>
-            </div>
-            <div class="form-group">
-            <label>Type soort:</label>
-                <?php echo $melding['type']; ?>
-            </div>
-            <!-- Zorg dat het type wordt getoond, net als de naam hierboven -->
-            <div class="form-group">
-                <label for="capaciteit">Capaciteit p/uur:</label>
-                <input type="number" min="0" name="capaciteit" id="capaciteit" class="form-input"
-                    value="<?= $melding['capaciteit']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="prioriteit">Prio:</label>
-                <!-- Let op: de checkbox blijft nu altijd uit, pas dit nog aan -->
-                <input type="checkbox" name="prioriteit" id="prioriteit" <?php if ($melding['prioriteit']){echo 'checked';}?>>
-                <label for="prioriteit">Melding met prioriteit</label>
-            </div>
-            <div class="form-group"> 
-                <label for="melder">Naam melder:</label>
-                <!-- Voeg hieronder nog een value-attribuut toe, zoals bij capaciteit -->
-                <input type="text" name="melder" id="melder" class="form-input"
-                value =<?php echo $melding ['melder'];?>>
-            </div>
-            <div class="form-group">
-                <label for="overig">Overige info:</label>
-                <textarea name="overige_info" id="overig" class="form-input" rows="4"><?= $melding ['overige_info'];?></textarea>
-            </div>
-            
+                <label>Foto:</label>
+                <?php echo $...['...']; ?>
+            </div>            
             <input type="submit" value="Melding opslaan">
 
         </form>
