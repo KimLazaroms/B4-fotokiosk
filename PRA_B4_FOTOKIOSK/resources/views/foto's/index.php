@@ -10,8 +10,39 @@
 
     <?php require_once __DIR__.'/../components/header.php'; ?>
 
-    <!DOCTYPE html>
 
+    <?php
+// Include your database connection file
+require_once '../../../config/conn.php';
+
+// Check if the ID parameter is set
+if(isset($_GET['id'])) {
+    // Sanitize the ID to prevent SQL injection
+    $imageId = $_GET['id'];
+    $imageId = filter_var($imageId, FILTER_SANITIZE_NUMBER_INT);
+
+    // Prepare and execute a SELECT query to fetch image details based on the ID
+    $select_query = "SELECT * FROM b4_fotokiosk WHERE id = :id";
+    $statement = $conn->prepare($select_query);
+    $statement->bindParam(':id', $imageId);
+    $statement->execute();
+    
+    // Fetch the image details
+    $imageDetails = $statement->fetch(PDO::FETCH_ASSOC);
+
+    // Check if image details were found
+    if($imageDetails) {
+        // Return the image details as JSON
+        echo json_encode($imageDetails);
+    } else {
+        // Return an error message if image details were not found
+        echo json_encode(array('error' => 'Image not found'));
+    }
+} else {
+    // Return an error message if ID parameter is not set
+    echo json_encode(array('error' => 'ID parameter is missing'));
+}
+?>
 
 
 
@@ -20,64 +51,31 @@
     </div>
 
     <script>
-    // Function to display images based on the current day of the week
-    function displayDailyImages() {
-        var today = new Date();
-        var dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
-        var imageContainer = document.getElementById("imageContainer");
-        var numImages = 0; // Set to 0 initially
-        
-        // Define the image path
-        var imagePath = "";
-
-        // Define number of images based on the day of the week
-        switch(dayOfWeek) {
-            case 0: // Sunday
-                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/0_Zondag/";
-                numImages = 902; // Change accordingly
-                break;
-            case 1: // Monday
-                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/1_Maandag/";
-                numImages = 924; // Change accordingly
-                break;
-            case 2: // Tuesday
-                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/2_Dinsdag/";
-                numImages = 922; // Change accordingly
-                break;
-            case 3: // Wednesday
-                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/3_Woensdag/";
-                numImages = 918; // Change accordingly
-                break;
-            case 4: // Thursday
-                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/4_Donderdag/";
-                numImages = 5; // Change accordingly
-                break;
-            case 5: // Friday
-                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/5_Vrijdag/";
-                numImages = 906; // Change accordingly
-                break;
-            case 6: // Saturday
-                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/6_Zaterdag/";
-                numImages = 914; // Change accordingly
-                break;
-        }
-
-        var imagesHTML = "";
-
-        // Loop to create HTML for each image
-        for (var i = 1; i <= numImages; i++) {
-            var imageURL = imagePath + "image_" + i + ".jpg"; // Change this line to match your naming convention
-            console.log(imageURL);
-            imagesHTML += '<img src="' + imageURL + '" alt="Image ' + i + '">';
-        }
-
-        // Display the images in the container
-        imageContainer.innerHTML = imagesHTML;
+    // Function to display a specific image based on its ID
+    function displayImageById(imageId) {
+        // Perform AJAX request to fetch image details based on ID
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'get_image_details.php?id=' + imageId, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var imageData = JSON.parse(xhr.responseText);
+                if (imageData && !imageData.error) {
+                    var imageURL = "http://localhost/path/to/images/" + imageData.filename; // Adjust the URL as per your file structure
+                    document.getElementById("imageContainer").innerHTML = '<img src="' + imageURL + '" alt="Image">';
+                } else {
+                    console.log("Error: " + imageData.error);
+                }
+            }
+        };
+        xhr.send();
     }
 
-    // Call the function to display daily images when the page loads
-    window.onload = displayDailyImages;
-</script>
+    // Call the function to display a specific image when the page loads
+    window.onload = function() {
+        // Example: Display image with ID 1
+        displayImageById(1);
+    };
+</script>S
 
 
 
