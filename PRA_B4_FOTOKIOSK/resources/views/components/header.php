@@ -9,6 +9,7 @@
         </nav>
         <div>
             <a href="<?php echo $base_url; ?>/login.php">Inloggen</a>
+            <a href="<?php echo $base_url; ?>/register.php">Registreren</a>
             <a href="<?php echo $base_url; ?>/logout.php">Uitloggen</a>
         </div>
     </div>

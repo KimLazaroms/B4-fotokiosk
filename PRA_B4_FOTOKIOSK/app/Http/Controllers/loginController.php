@@ -5,7 +5,7 @@ $password = $_POST['password'];
 
 require_once '../../../config/conn.php';
 
-$query = "SELECT * FROM ... WHERE username = :username"; //Voer hier zelf de juiste database toe
+$query = "SELECT * FROM users WHERE username = :username"; //Voer hier zelf de juiste database toe
 $statement = $conn->prepare($query);
 $statement->execute([
     ":username" => $username,
@@ -26,6 +26,6 @@ if(!password_verify($password, $user['password']))
 $_SESSION['user_id'] = $user['id'];
 
 $msg = "U bent nu ingelogd";	
-header("location: ../../../resources/views/meldingen/index.php?msg=$msg");
+header("location: ../../../index.php?msg=$msg");
 
 ?>
