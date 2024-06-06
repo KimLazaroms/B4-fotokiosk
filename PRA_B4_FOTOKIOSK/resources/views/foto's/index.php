@@ -20,56 +20,64 @@
     </div>
 
     <script>
-        // Function to display images based on the current day of the week
-        function displayDailyImages() {
-            var today = new Date();
-            var dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
-            var daysOfWeek = ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"];
-            var imageContainer = document.getElementById("imageContainer");
-            var imagePath = dayOfWeek + "_" + daysOfWeek[dayOfWeek] + "/";
-            var numImages = 0; // Set to 0 initially
-            
-            // Define number of images based on the day of the week
-            switch(dayOfWeek) {
-                case 0: // Sunday
-                    numImages = 3; // Change accordingly
-                    break;
-                case 1: // Monday
-                    numImages = 4; // Change accordingly
-                    break;
-                case 2: // Tuesday
-                    numImages = 5; // Change accordingly
-                    break;
-                case 3: // Wednesday
-                    numImages = 6; // Change accordingly
-                    break;
-                case 4: // Thursday
-                    numImages = 7; // Change accordingly
-                    break;
-                case 5: // Friday
-                    numImages = 8; // Change accordingly
-                    break;
-                case 6: // Saturday
-                    numImages = 9; // Change accordingly
-                    break;
-            }
+    // Function to display images based on the current day of the week
+    function displayDailyImages() {
+        var today = new Date();
+        var dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+        var imageContainer = document.getElementById("imageContainer");
+        var numImages = 0; // Set to 0 initially
+        
+        // Define the image path
+        var imagePath = "";
 
-            var imagesHTML = "";
-
-            // Loop to create HTML for each image
-            for (var i = 1; i <= numImages; i++) {
-                var imageURL = imagePath + i + ".jpg";
-                imagesHTML += '<img src="' + imageURL + '" alt="Image ' + i + '">';
-            }
-
-            // Display the images in the container
-            imageContainer.innerHTML = imagesHTML;
+        // Define number of images based on the day of the week
+        switch(dayOfWeek) {
+            case 0: // Sunday
+                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/0_Zondag/";
+                numImages = 902; // Change accordingly
+                break;
+            case 1: // Monday
+                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/1_Maandag/";
+                numImages = 924; // Change accordingly
+                break;
+            case 2: // Tuesday
+                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/2_Dinsdag/";
+                numImages = 922; // Change accordingly
+                break;
+            case 3: // Wednesday
+                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/3_Woensdag/";
+                numImages = 918; // Change accordingly
+                break;
+            case 4: // Thursday
+                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/4_Donderdag/";
+                numImages = 5; // Change accordingly
+                break;
+            case 5: // Friday
+                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/5_Vrijdag/";
+                numImages = 906; // Change accordingly
+                break;
+            case 6: // Saturday
+                imagePath = "http://localhost/pra/blokB/B4-fotokiosk/PRA_B4_FOTOKIOSK/resources/views/img/6_Zaterdag/";
+                numImages = 914; // Change accordingly
+                break;
         }
 
-        // Call the function to display daily images when the page loads
-        window.onload = displayDailyImages;
-    </script>
+        var imagesHTML = "";
 
+        // Loop to create HTML for each image
+        for (var i = 1; i <= numImages; i++) {
+            var imageURL = imagePath + "image_" + i + ".jpg"; // Change this line to match your naming convention
+            console.log(imageURL);
+            imagesHTML += '<img src="' + imageURL + '" alt="Image ' + i + '">';
+        }
+
+        // Display the images in the container
+        imageContainer.innerHTML = imagesHTML;
+    }
+
+    // Call the function to display daily images when the page loads
+    window.onload = displayDailyImages;
+</script>
 
 
 
