@@ -186,6 +186,42 @@ label{
 }
 
 
+.box {
+  flex: 0 0 40%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black 5px double;
+  border-radius: 25px;
+  background-color: 	#dddddd;
+}
+.Rrow{
+  display: flex;
+  flex-direction: row;
+}
+.Lrow{
+  display: flex;
+  flex-direction: row;
+}
+.InfoBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5%;
+}
+img{
+    width: 400px;
+    height: auto;
+}
+.ImgPadding{
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+}
+
+
+
 
 
 
