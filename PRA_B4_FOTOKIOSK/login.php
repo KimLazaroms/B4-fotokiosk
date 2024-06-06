@@ -19,7 +19,7 @@
         <h1>Welkom bij de technische dienst</h1>
         <img src="public_html/img/logo-big-fill-only.png" alt="logo">
 
-        <form action="<?php echo $base_url; ?>/backend/app/Http/Controllers/userController.php" method="POST">
+        <form action="<?php echo $base_url; ?>/app/Http/Controllers/loginController.php" method="POST">
                 <input type="hidden" name="action" value="login">
         <div class="form-group">                 
             <label for="username">Username</label>                 
