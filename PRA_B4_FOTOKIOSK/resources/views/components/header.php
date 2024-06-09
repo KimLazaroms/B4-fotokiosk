@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require_once __DIR__.'/../../../config/config.php'; ?>
 
 <header>
@@ -8,9 +9,13 @@
             <a href="<?php echo $base_url; ?>/resources/views/foto's/index.php">Foto's</a>
         </nav>
         <div>
-            <a href="<?php echo $base_url; ?>/login.php">Inloggen</a>
-            <a href="<?php echo $base_url; ?>/register.php">Registreren</a>
-            <a href="<?php echo $base_url; ?>/logout.php">Uitloggen</a>
+            <?php if(!isset($_SESSION['user_id'])): ?>
+                <a href="<?php echo $base_url; ?>/login.php">Inloggen</a> |
+                <a href="<?php echo $base_url; ?>/register.php">Registreren</a> |
+            <?php endif ?>
+            <?php if(isset($_SESSION['user_id'])): ?>
+                <a href="<?php echo $base_url; ?>/logout.php">Uitloggen</a>
+            <?php endif ?>
         </div>
     </div>
 </header>

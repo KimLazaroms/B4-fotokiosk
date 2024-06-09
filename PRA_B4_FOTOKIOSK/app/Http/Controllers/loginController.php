@@ -24,6 +24,7 @@ if(!password_verify($password, $user['password']))
 }
 
 $_SESSION['user_id'] = $user['id'];
+$_SESSION['username'] = $user['username'];
 
 $msg = "U bent nu ingelogd";	
 header("location: ../../../index.php?msg=$msg");

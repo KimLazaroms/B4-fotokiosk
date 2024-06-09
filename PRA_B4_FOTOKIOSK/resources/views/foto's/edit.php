@@ -19,7 +19,7 @@
         require_once '../components/header.php'; ?>
 
     <div class="container">
-        <h1>Melding aanpassen</h1>
+        <h1>Foto aanpassen</h1>
 
         <?php
         //Haal het id uit de URL:
@@ -30,7 +30,7 @@
 
 
         //2. Query, vul deze aan met een WHERE zodat je alleen de melding met dit id ophaalt
-        $select_query = "SELECT * FROM meldingen WHERE id = :id ";
+        $select_query = "SELECT * FROM fotos WHERE id = :id ";
 
         //3. Van query naar statement
         $statement = $conn->prepare($select_query);
@@ -41,19 +41,19 @@
         ]);
 
         //5. Ophalen gegevens, tip: gebruik hier fetch().
-        $melding = $statement->fetch(PDO::FETCH_ASSOC);
+        $foto = $statement->fetch(PDO::FETCH_ASSOC);
         ?>
 
-        <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php"method="POST">
+        <form action="<?php echo $base_url; ?>/app/Http/Controllers/fotoController.php"method="POST">
             <input type="hidden" name="action" value="update">
-            <input type="hidden" name="id" value="<?php echo $melding ['id'];?>">
+            <input type="hidden" name="id" value="<?php echo $fot ['id'];?>">
             <!-- (voeg hier opdracht 7 toe) -->
 
             <div class="form-group">
                 <label>Foto:</label>
-                <?php echo $...['...']; ?>
+                <?php echo $foto['img']; ?>
             </div>            
-            <input type="submit" value="Melding opslaan">
+            <input type="submit" value="foto opslaan">
 
         </form>
 

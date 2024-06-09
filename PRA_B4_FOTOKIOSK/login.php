@@ -18,6 +18,8 @@
 
         <h1>Welkom bij de technische dienst</h1>
         <img src="public_html/img/logo-big-fill-only.png" alt="logo">
+        
+        <p>Nog geen account? <a href="register.php">Registreer hier!</a> </p>
 
         <form action="<?php echo $base_url; ?>/app/Http/Controllers/loginController.php" method="POST">
                 <input type="hidden" name="action" value="login">
@@ -33,7 +35,7 @@
                 <label for="password">Wachtwoord</label>
                 <input type="password" name="password" id="password" class="form-input">
             </div>
-            <input type="submit" value="Verstuur melding">
+            <input type="submit" value="Inloggen">
 
         </form>
 

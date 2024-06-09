@@ -8,8 +8,14 @@
         require_once '../../../config/conn.php';
 
         //2. Query
+        $query= "INSERT INTO foto's (date, foto) VALUES (:date, :foto)";
         //3. Prepare
+        $statement = $conn->prepare($query);
         //4. Execute
+        $statement -> Execute([
+        ":date" => $date,
+        ":foto" => $foto,
+    ]);
     }
 
     if ($action == 'update') {
@@ -21,7 +27,9 @@
 
         //2. Query
         //3. Prepare
-        //4. Execute        header("location: ../../../resources/views/meldingen/index.php?msg=$msg");
+        //4. Execute        
+        $msg = "De foto is aangepast";	
+        header("location: ../../../resources/views/foto's/index.php?msg=$msg");
 
     }
     if ($action == 'delete') {
