@@ -32,9 +32,11 @@
                 <img src="<?php echo $base_url . $foto['img']; ?>" alt="">    
             </td>
             <td>
+                <?php if(isset($_SESSION['user_id'])): ?>
                 <a href="edit.php?id=<?php echo $foto['id'];?>">
                     aanpassen
                 </a>
+                <?php endif ?>
             </td>
         <?php endforeach; ?>
         </table>

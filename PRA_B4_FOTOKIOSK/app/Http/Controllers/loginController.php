@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -23,7 +23,7 @@ if(!password_verify($password, $user['password']))
     die ("Error: wachtwoord onjuist!"); 
 }
 
-$_SESSION['user_id'] = $user['id'];
+$_SESSION['user_id'] = $user['ID'];
 $_SESSION['username'] = $user['username'];
 
 $msg = "U bent nu ingelogd";	
