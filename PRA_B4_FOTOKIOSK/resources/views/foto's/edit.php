@@ -46,12 +46,17 @@
 
         <form action="<?php echo $base_url; ?>/app/Http/Controllers/fotoController.php"method="POST">
             <input type="hidden" name="action" value="update">
-            <input type="hidden" name="id" value="<?php echo $fot ['id'];?>">
+            <input type="hidden" name="id" value="<?php echo $foto ['id'];?>">
             <!-- (voeg hier opdracht 7 toe) -->
-
+            <div class="form-group">
+                <label for="date">Deadline: </label>
+                <input value="<?php echo $foto['date']?>" type="date" name="date"
+                id="date" class="form-input">
+            </div>
             <div class="form-group">
                 <label>Foto:</label>
-                <?php echo $foto['img']; ?>
+                <input value="<?php echo $foto['img']?>" type="text" name="img"
+                id="img" class="form-input">
             </div>            
             <input type="submit" value="foto opslaan">
 
@@ -60,9 +65,9 @@
         <hr>
 
 
-        <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php"method="POST">
+        <form action="<?php echo $base_url; ?>/app/Http/Controllers/fotoController.php"method="POST">
             <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="id" value="<?php echo $melding ['id'];?>">
+            <input type="hidden" name="id" value="<?php echo $foto ['id'];?>">
             <input type="submit" value="verwijderen">
         </form>
 

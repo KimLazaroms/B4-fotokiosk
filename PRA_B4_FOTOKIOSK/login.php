@@ -28,10 +28,6 @@
             <input type="text" name="username" id="username" class="form-input">             
         </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-input">
-            </div>
-            <div class="form-group">
                 <label for="password">Wachtwoord</label>
                 <input type="password" name="password" id="password" class="form-input">
             </div>

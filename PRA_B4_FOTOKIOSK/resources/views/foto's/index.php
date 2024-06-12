@@ -20,13 +20,20 @@
         $statement->execute();
         $fotos = $statement->fetchAll(PDO::FETCH_ASSOC);
     ?>
+    <?php if(isset($_SESSION['user_id'])): ?>
+    <a href="create.php?">
+                    create
+                </a>
+                
+                <?php endif ?>
         <table>
             <tr>
                 <th>Datum</th>
                 <th>Foto</th>
                 <th>Aanpassen</th>
             </tr>
-        <?php foreach ($fotos as $foto) :?>
+            <?php foreach ($fotos as $foto) :?>
+            <tr>
             <td><?php echo $foto['date'];?></td>
             <td>
                 <img src="<?php echo $base_url . $foto['img']; ?>" alt="">    
@@ -38,7 +45,8 @@
                 </a>
                 <?php endif ?>
             </td>
-        <?php endforeach; ?>
+            </tr>
+            <?php endforeach; ?>
         </table>
     </div>
 </body> 

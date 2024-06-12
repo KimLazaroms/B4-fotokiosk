@@ -12,14 +12,18 @@
     <?php require_once __DIR__.'/../components/header.php'; ?>
 
     <div class="container">
-        <h1>Nieuwe melding</h1>
+        <h1>Nieuwe foto</h1>
 
-        <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php" method="POST">
+        <form action="<?php echo $base_url; ?>/app/Http/Controllers/fotoController.php" method="POST">
             <input type="hidden" name="action" value="create">
 
             <div class="form-group">
-                <label for="attractie">Foto:</label>
-                <input type="..." name="foto" id="foto" class="form-input">
+                <label for="img">Foto:</label>
+                <input type="text" name="img" id="img" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="date">date:</label>
+                <input type="date" name="date" id="date" class="form-input">
             </div>
             <input type="submit" value="Verstuur melding">
 
